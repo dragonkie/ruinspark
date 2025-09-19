@@ -1,0 +1,22 @@
+{
+  "RUINSPARK.AbilityStr": "Strength",
+  "RUINSPARK.AbilityCon": "Constitution",
+  "RUINSPARK.AbilityDex": "Dexterity",
+  "RUINSPARK.AbilityInt": "Intelligence",
+  "RUINSPARK.AbilityWis": "Wisdom",
+  "RUINSPARK.AbilityCha": "Charisma",
+
+  "RUINSPARK.AbilityStrAbbr": "str",
+  "RUINSPARK.AbilityConAbbr": "con",
+  "RUINSPARK.AbilityDexAbbr": "dex",
+  "RUINSPARK.AbilityIntAbbr": "int",
+  "RUINSPARK.AbilityWisAbbr": "wis",
+  "RUINSPARK.AbilityChaAbbr": "cha",
+
+  "RUINSPARK.EffectCreate": "Create Effect",
+  "RUINSPARK.EffectToggle": "Toggle Effect",
+  "RUINSPARK.EffectEdit": "Edit Effect",
+  "RUINSPARK.EffectDelete": "Delete Effect",
+
+  "RUINSPARK.Add": "Add"
+}
