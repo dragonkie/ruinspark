@@ -1,6 +1,5 @@
 // Import document classes.
-import { RuinsparkActor } from "./documents/actor.mjs";
-import { RuinsparkItem } from "./documents/item.mjs";
+import * as documents from "./documents/_module.mjs";
 
 // Import data model calsses
 import * as DataModels from "./data/_module.mjs";
@@ -34,8 +33,11 @@ Hooks.once('init', async function () {
   CONFIG.RUINSPARK = RUINSPARK;
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = RuinsparkActor;
-  CONFIG.Item.documentClass = RuinsparkItem;
+  CONFIG.Actor.documentClass = documents.RuinsparkActor;
+  CONFIG.Item.documentClass = documents.RuinsparkItem;
+  CONFIG.Combat.documentClass = documents.RuinsparkCombat;
+  CONFIG.Combatant.documentClass = documents.RuinsparkCombatant;
+  CONFIG.ChatMessage.documentClass = documents.RuinsparkChatMessage;
 
   // Register system data models
   CONFIG.Actor.dataModels = DataModels.actor.config;

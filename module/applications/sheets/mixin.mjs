@@ -90,7 +90,7 @@ export default function RuinsparkSheetMixin(Base) {
          */
         _onFirstRender(context, options) {
             super._onFirstRender(context, options);
-            this._setupContextMenu();
+            //this._setupContextMenu();
         }
 
         /**

@@ -118,7 +118,7 @@ export class ActorDataModel extends SystemDataModel {
             acc: new NumberField({ initial: 0 }),// precision
             wit: new NumberField({ initial: 0 }),// wit
             riz: new NumberField({ initial: 0 }),// spectacle
-            pwr: new NumberField({ initial: 0 }),// power
+            pow: new NumberField({ initial: 0 }),// power
             spd: new NumberField({ initial: 0 }),// speed
             snk: new NumberField({ initial: 0 }),// stealth
         });

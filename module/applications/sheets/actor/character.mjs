@@ -11,7 +11,7 @@ export default class CharacterSheet extends RuinsparkActorSheet {
     }
 
     static PARTS = {
-        body: { template: "systems/ruinspark/templates/actor/actor-character-sheet.html" }
+        body: { template: "systems/ruinspark/templates/sheets/actor/body.hbs" }
     }
 
     static TABS = {
