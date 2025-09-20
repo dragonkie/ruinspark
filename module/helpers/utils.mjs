@@ -1,5 +1,3 @@
-import LOGGER from "./logger.mjs";
-
 export default class utils {
     //================================================================================================
     // Foundry quick references
@@ -62,7 +60,6 @@ export default class utils {
      * @param {Function} func 
      */
     static registerMod(term, label, func) {
-        LOGGER.debug(`Registering die modifier: [${term}] to [${label}]`);
         foundry.dice.terms.Die.prototype.constructor.MODIFIERS[term] = label;
         foundry.dice.terms.Die.prototype[label] = func;
     }

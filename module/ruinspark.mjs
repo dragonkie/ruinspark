@@ -6,11 +6,10 @@ import { RuinsparkItem } from "./documents/item.mjs";
 import * as DataModels from "./data/_module.mjs";
 
 // Import sheet classes.
-import { RuinsparkActorSheet } from "./sheets/actor-sheet.mjs";
-import { RuinsparkItemSheet } from "./sheets/item-sheet.mjs";
+import * as applications from "./applications/_module.mjs";
 
 // Import helper/utility classes and constants.
-import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
+import registerHandlebarsHelpers from "./helpers/templates.mjs";
 import { RUINSPARK } from "./helpers/config.mjs";
 
 /* -------------------------------------------- */
@@ -22,9 +21,13 @@ Hooks.once('init', async function () {
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.ruinspark = {
+    documents: {},
+    applications: { ...applications },
+    DataModels: DataModels,
     RuinsparkActor,
     RuinsparkItem,
-    rollItemMacro
+    rollItemMacro,
+    id: "ruinspark"
   };
 
   // Add custom constants for configuration.
@@ -35,37 +38,24 @@ Hooks.once('init', async function () {
   CONFIG.Item.documentClass = RuinsparkItem;
 
   // Register system data models
-  LOGGER.log('Registering data models');
   CONFIG.Actor.dataModels = DataModels.actor.config;
   CONFIG.Item.dataModels = DataModels.item.config;
 
   // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("ruinspark", RuinsparkActorSheet, { makeDefault: true });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("ruinspark", RuinsparkItemSheet, { makeDefault: true });
+  for (const sheet of applications.SystemSheets.actor.config) {
+    console.log('registering sheet:', sheet);
+    console.log(sheet.application);
+    console.log(sheet.options);
+    foundry.documents.collections.Actors.registerSheet("ruinspark", sheet.application, sheet.options);
+  }
+
+  for (const sheet of applications.SystemSheets.item.config) {
+    console.log('registering sheet:', sheet);
+    foundry.documents.collections.Items.registerSheet("ruinspark", sheet.application, sheet.options);
+  }
 
   // Preload Handlebars templates.
-  return preloadHandlebarsTemplates();
-});
-
-/* -------------------------------------------- */
-/*  Handlebars Helpers                          */
-/* -------------------------------------------- */
-
-// If you need to add Handlebars helpers, here are a few useful examples:
-Handlebars.registerHelper('concat', function () {
-  var outStr = '';
-  for (var arg in arguments) {
-    if (typeof arguments[arg] != 'object') {
-      outStr += arguments[arg];
-    }
-  }
-  return outStr;
-});
-
-Handlebars.registerHelper('toLowerCase', function (str) {
-  return str.toLowerCase();
+  return registerHandlebarsHelpers();
 });
 
 /* -------------------------------------------- */

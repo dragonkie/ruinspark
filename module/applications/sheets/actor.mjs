@@ -1,9 +1,9 @@
 import RuinsparkSheetMixin from "./mixin.mjs";
 
-const ApplicationV2 = foundry.applications.sheets.ActorSheetV2;
-export default class RuinsparkActorSheet extends RuinsparkSheetMixin(ApplicationV2) {
+const {ActorSheetV2} = foundry.applications.sheets;
+export default class RuinsparkActorSheet extends RuinsparkSheetMixin(ActorSheetV2) {
     static DEFAULT_OPTIONS = {
-        classes: ["sheet", "actor"],
+        classes: ["ruinspark", "sheet", "actor"],
         position: {},
         window: {resizeable: false},
         actions: {}
@@ -11,4 +11,5 @@ export default class RuinsparkActorSheet extends RuinsparkSheetMixin(Application
 
     static PARTS = {};
     static TABS = {};
+    tabGroups = {};
 }

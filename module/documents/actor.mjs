@@ -2,7 +2,7 @@
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
-export class RuinsparkActor extends Actor {
+export class RuinsparkActor extends foundry.documents.Actor {
 
   /** @override */
   prepareData() {
@@ -35,8 +35,6 @@ export class RuinsparkActor extends Actor {
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
-    this._prepareCharacterData(actorData);
-    this._prepareNpcData(actorData);
   }
 
   /**

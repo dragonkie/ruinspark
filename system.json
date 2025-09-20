@@ -8,9 +8,12 @@
     "verified": "13.347",
     "maximum": 13
   },
-  "authors": [{
-    "name": "dragonkie"
-  }],
+  "authors": [
+    {
+      "name": "dragonkie",
+      "url": "https://github.com/dragonkie"
+    }
+  ],
   "esmodules": ["module/ruinspark.mjs"],
   "styles": ["css/ruinspark.css"],
   "scripts": [],
@@ -22,13 +25,37 @@
       "path": "lang/en.json"
     }
   ],
-  "gridDistance": 5,
-  "gridUnits": "ft",
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
   "primaryTokenAttribute": "hp",
   "secondaryTokenAttribute": "stamina",
   "url": "",
   "manifest": "",
   "download": "",
   "license": "LICENSE.txt",
-  "changelog": "CHANGELOG.md"
+  "changelog": "CHANGELOG.md",
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": [],
+        "filePathFields": {}
+      },
+      "npc": {
+        "htmlFields": [],
+        "filePathFields": {}
+      }
+    },
+    "Item": {
+      "weapon" : {
+        "htmlFields": [],
+        "filePathFields": {}
+      },
+      "armour" : {
+        "htmlFields": [],
+        "filePathFields": {}
+      }
+    }
+  }
 }

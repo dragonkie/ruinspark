@@ -8,7 +8,7 @@ export class RuinsparkActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["ruinspark", "sheet", "actor"],
       template: "systems/ruinspark/templates/actor/actor-sheet.html",
       width: 600,
@@ -38,17 +38,6 @@ export class RuinsparkActorSheet extends ActorSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = actorData.system;
     context.flags = actorData.flags;
-
-    // Prepare character data and items.
-    if (actorData.type == 'character') {
-      this._prepareItems(context);
-      this._prepareCharacterData(context);
-    }
-
-    // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
-      this._prepareItems(context);
-    }
 
     // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();

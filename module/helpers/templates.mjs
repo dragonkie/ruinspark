@@ -1,6 +1,7 @@
 
 function registerTemplates() {
     const partials = [
+        /*
         //components
         `${tfm.filepath.template}/shared/resource-bar.hbs`,
         `${tfm.filepath.template}/shared/resource-bar-inline.hbs`,
@@ -20,13 +21,14 @@ function registerTemplates() {
 
         // Dialog partials
         `${tfm.filepath.template}/dialog/parts/roll-options.hbs`
+        */
     ];
 
     // Strips the partials down to barebones and prefixs them with the tfm tag to be used for easy loading and legibility in the .hbs sheets
     // @example {{> 'tfm.sheet-tabs'}}
     const paths = {};
     for (const path of partials) {
-        paths[`tfm.${path.split("/").pop().replace(".hbs", "")}`] = path;
+        paths[`rs.${path.split("/").pop().replace(".hbs", "")}`] = path;
     }
 
     return foundry.applications.handlebars.loadTemplates(paths);
@@ -173,7 +175,7 @@ function registerHelpers() {
 /**
  * Registers all system specific handlebars functionality
  */
-export default function registerHandlebars() {
+export default function registerHandlebarsHelpers() {
     registerTemplates();
     registerHelpers();
 }

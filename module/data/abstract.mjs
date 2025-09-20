@@ -13,7 +13,52 @@ export class SystemDataModel extends foundry.abstract.TypeDataModel {
      * @returns {Object}
      */
     static defineSchema() {
-        return {};
+        const schema = super.defineSchema();
+        return schema;
+    }
+
+    //=================================================================
+    //> Prepare data
+    //=================================================================
+    prepareData() {
+        super.prepareData();
+    }
+
+    prepareBaseData() {
+        super.prepareBaseData();
+    }
+
+    prepareDerivedData() {
+        super.prepareDerivedData();
+    }
+
+    //=================================================================
+    //> Creation events
+    //=================================================================
+    _onCreate(data, options, userId) {
+        super._onCreate(data, options, userId);
+    }
+
+    //=================================================================
+    //> Update events
+    //=================================================================
+    async _preUpdate(changes, options, user) {
+        super._preUpdate(changes, options, user);
+    }
+
+    _onUpdate(changed, options, userId) {
+        super._onUpdate(changed, options, userId);
+    }
+
+    //=================================================================
+    //> Delete events
+    //=================================================================
+    async _preDelete(options, user) {
+        return super._preDelete(options, user);
+    }
+
+    _onDelete(options, userId) {
+        super._onDelete(options, userId);
     }
 
     //===============================================================================
@@ -77,6 +122,8 @@ export class ActorDataModel extends SystemDataModel {
             spd: new NumberField({ initial: 0 }),// speed
             snk: new NumberField({ initial: 0 }),// stealth
         });
+
+        return schema;
     }
 
     static AttributeField() {
@@ -88,5 +135,9 @@ export class ActorDataModel extends SystemDataModel {
 }
 
 export class ItemDataModel extends SystemDataModel {
-
+    static defineSchema() {
+        const schema = {};
+        schema.descritpion = new HTMLField({ initial: "" });
+        return schema;
+    }
 }

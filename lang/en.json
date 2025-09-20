@@ -18,5 +18,18 @@
   "RUINSPARK.EffectEdit": "Edit Effect",
   "RUINSPARK.EffectDelete": "Delete Effect",
 
-  "RUINSPARK.Add": "Add"
+  "RUINSPARK.Add": "Add",
+
+  "RUINSPARK": {
+    "Sheets": {
+      "Actor": {
+        "Actor": "Actor",
+        "Npc": "Npc"
+      },
+      "Item": {
+        "Weapon": "Weapon",
+        "Armour": "Armour"
+      }
+    }
+  }
 }
