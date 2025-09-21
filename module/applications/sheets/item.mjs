@@ -7,12 +7,6 @@ export default class RuinsparkItemSheet extends RuinsparkSheetMixin(ApplicationV
         classes: ["ruinspark", "sheet", "item"],
         position: { height: 'auto', width: 600, top: 60, left: 120 },
         window: { resizable: false },
-        actions: {
-
-        }
-    }
-
-    static PARTS = {
-
+        actions: {}
     }
 }

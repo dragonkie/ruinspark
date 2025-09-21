@@ -20,11 +20,9 @@ Hooks.once('init', async function () {
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.ruinspark = {
-    documents: {},
+    documents: {...documents},
     applications: { ...applications },
     DataModels: DataModels,
-    RuinsparkActor,
-    RuinsparkItem,
     rollItemMacro,
     id: "ruinspark"
   };

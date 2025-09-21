@@ -23,8 +23,8 @@ export default class utils {
         return foundry.applications.handlebars.renderTemplate(path, data);
     }
 
-    static async enrichHTML(html) {
-        return foundry.applications.ux.TextEditor.enrichHTML(html);
+    static async enrichHTML(html, options) {
+        return foundry.applications.ux.TextEditor.enrichHTML(html, options);
     }
 
     static getDragEventData(data) {
@@ -124,5 +124,34 @@ export default class utils {
      */
     static duplicate(original) {
         return JSON.parse(JSON.stringify(original));
+    }
+
+    /**
+     * @param {String} HTML representing a single node (which might be an Element, a text node, or a comment).
+    * @return {Node}
+    */
+    static htmlToNode(html) {
+        const template = document.createElement('template');
+        template.innerHTML = html;
+        const nNodes = template.content.childNodes.length;
+        if (nNodes !== 1) {
+            throw new Error(
+                `html parameter must represent a single node; got ${nNodes}. ` +
+                'Note that leading or trailing spaces around an element in your ' +
+                'HTML, like " <img/> ", get parsed as text nodes neighbouring ' +
+                'the element; call .trim() on your input to avoid this.'
+            );
+        }
+        return template.content.firstChild;
+    }
+
+    /**
+     * @param {String} HTML representing any number of sibling nodes
+     * @return {NodeList} 
+     */
+    static htmlToNodes(html) {
+        const template = document.createElement('template');
+        template.innerHTML = html;
+        return template.content.childNodes;
     }
 }

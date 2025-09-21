@@ -13,7 +13,12 @@ export class SystemDataModel extends foundry.abstract.TypeDataModel {
      * @returns {Object}
      */
     static defineSchema() {
-        const schema = super.defineSchema();
+        const schema = {};
+
+        schema.description = new SchemaField({
+            value: new HTMLField({ initial: "" })
+        })
+
         return schema;
     }
 
@@ -30,6 +35,10 @@ export class SystemDataModel extends foundry.abstract.TypeDataModel {
 
     prepareDerivedData() {
         super.prepareDerivedData();
+    }
+
+    getRollData() {
+        return super.getRollData();
     }
 
     //=================================================================
@@ -96,14 +105,15 @@ export class SystemDataModel extends foundry.abstract.TypeDataModel {
 //===================================================================================
 export class ActorDataModel extends SystemDataModel {
     static defineSchema() {
-        const schema = {};
+        const schema = super.defineSchema();
 
         // Core stats
-        schema.hp = this.ValueField();
-        schema.stamina = this.ValueField();
-        schema.armour = this.ValueField();
-        schema.mp = this.ValueField();
-        schema.reflex = this.ValueField();
+        schema.hp = this.ValueField(12, 1, 12);
+        schema.stamina = this.ValueField(12, 1, 12);
+        schema.armour = this.ValueField(12, 1, 12);
+        schema.mp = this.ValueField(12, 1, 12);
+        schema.momentum = this.ValueField(12, 1, 12);
+        schema.reflex = this.ValueField(12, 1, 12);
 
         // Actors attribute scores
         schema.attributes = new SchemaField({
@@ -115,12 +125,12 @@ export class ActorDataModel extends SystemDataModel {
 
         // Define their approach modifiers
         schema.approaches = new SchemaField({
-            acc: new NumberField({ initial: 0 }),// precision
-            wit: new NumberField({ initial: 0 }),// wit
-            riz: new NumberField({ initial: 0 }),// spectacle
-            pow: new NumberField({ initial: 0 }),// power
-            spd: new NumberField({ initial: 0 }),// speed
-            snk: new NumberField({ initial: 0 }),// stealth
+            acc: this.ValueField(0, -12, 12),// precision
+            wit: this.ValueField(0, -12, 12),// wit
+            riz: this.ValueField(0, -12, 12),// spectacle
+            pow: this.ValueField(0, -12, 12),// power
+            spd: this.ValueField(0, -12, 12),// speed
+            snk: this.ValueField(0, -12, 12),// stealth
         });
 
         return schema;
@@ -132,12 +142,22 @@ export class ActorDataModel extends SystemDataModel {
             mod: new NumberField({ initial: 0 })
         });
     }
+
+    prepareDerivedData() {
+        const data = super.prepareDerivedData();
+        this.dc = {};
+        for (const [key, approach] of Object.entries(this.approaches)) {
+            this.dc[key] = {};
+            for (const [k, attribute] of Object.entries(this.attributes)) {
+                this.dc[key][k] = approach.value + attribute.value;
+            }
+        }
+    }
 }
 
 export class ItemDataModel extends SystemDataModel {
     static defineSchema() {
-        const schema = {};
-        schema.descritpion = new HTMLField({ initial: "" });
+        const schema = super.defineSchema();
         return schema;
     }
 }

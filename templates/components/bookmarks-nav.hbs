@@ -1,0 +1,8 @@
+{{!-- Sheet Tab Navigation --}}
+<nav class="sheet-bookmarks flexcol align-center tabs">
+    {{#each tabs}}
+    <a class="{{cssClass}} bookmark ui-control icon" data-action="bookmark" data-tab="{{id}}" data-bookmark="{{id}}" data-group="{{group}}">
+        <i class="fa-solid {{icon}}" title="{{localize label}}"></i>
+    </a>
+    {{/each}}
+</nav>

@@ -1,5 +1,82 @@
+@use '../utils/bootstrap' as util;
+
 .item-form {
-  font-family: $font-primary;
+  font-family: util.$font-primary;
+}
+
+.sheet.actor {
+  overflow: visible;
+
+  // Fix the border radius corner clipping issues
+  .window-header {
+    border-radius: 6px 6px 0 0;
+  }
+
+  .window-content {
+    border-radius: 0 0 6px 6px;
+    overflow: auto;
+    min-height: 400px;
+  }
+
+  // Bookmark style tabs
+  &:hover {
+    .sheet-bookmarks .bookmark {
+      background-color: var(--control-hover-bg-color, rgba(0, 0, 0, 1));
+    }
+  }
+
+  .sheet-bookmarks {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: none;
+    position: absolute;
+    left: 100%;
+    top: 36px;
+    align-items: flex-start;
+    text-shadow: 0 0 0 rgba(252, 205, 119, 0.0);
+
+    .bookmark {
+      display: flex;
+
+      box-sizing: border-box;
+      border-radius: 0 5px 5px 0;
+
+      background-color: var(--control-bg-color, rgba(0, 0, 0, 0.3));
+
+      transition: all 200ms ease;
+      width: 2rem;
+      height: 2rem;
+
+      text-align: center;
+      align-items: center;
+      justify-items: center;
+
+      &:hover,
+      &.active {
+        width: 3rem;
+        height: 3rem;
+        border-color: #342c35;
+      }
+
+      &.active {
+        border-color: #524953;
+        background-color: #16151b;
+
+        &>* {
+          text-shadow: 0 0 0.5em rgba(252, 205, 119, 0.5);
+        }
+      }
+    }
+  }
+
+  &.minimized,
+  &.minimizing {
+    .sheet-bookmarks {
+      display: none;
+    }
+  }
+
 }
 
 .sheet-header {
@@ -10,6 +87,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;
+  border-bottom: 1px solid var(--color-light-5, rgb(155, 131, 99));
 
   .profile-img {
     flex: 0 0 100px;
@@ -26,6 +104,7 @@
     padding: 0px;
     margin: 5px 0;
     border-bottom: 0;
+
     input {
       width: 100%;
       height: 100%;
@@ -46,7 +125,7 @@
 
 .tox {
   .tox-editor-container {
-    background: $c-white;
+    background: util.$c-white;
   }
 
   .tox-edit-area {

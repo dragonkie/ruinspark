@@ -2,6 +2,8 @@
 function registerTemplates() {
     const path = `systems/${game.ruinspark.id}/templates`
     const partials = [
+        `${path}/components/bookmarks-nav.hbs`,
+        `${path}/components/tabs-content.hbs`,
         /*
         //components
         `${tfm.filepath.template}/shared/resource-bar.hbs`,
@@ -9,8 +11,7 @@ function registerTemplates() {
         `${tfm.filepath.template}/shared/description.hbs`,
 
         // Sheet partials
-        `${tfm.filepath.template}/shared/tabs-nav.hbs`,
-        `${tfm.filepath.template}/shared/tabs-content.hbs`,
+        
 
         // Actor Partials
         `${tfm.filepath.template}/actor/shared/actor-abilities.hbs`,
@@ -144,6 +145,29 @@ function registerHelpers() {
             };
 
             const group = field.toInput(groupConfig, inputConfig);
+            return new Handlebars.SafeString(group.outerHTML);
+        },
+        systemFieldInput(system, path, options) {
+            // auto fills in the details to the input using the provided path from the system data
+            // the system needs to define a schema path as well
+            const field = system?.schema.getField(path);
+            if (!field) throw new Error("Couldn't find field path for system schema, was it included?");
+
+            const { classes, label, hint, rootId, stacked, units, widget, ...inputConfig } = options.hash;
+            const groupConfig = {
+                label, hint, rootId, stacked, widget, localize: true, units,
+                classes: typeof classes === "string" ? classes.split(" ") : []
+            };
+
+            const input = path.split(".");
+            var value = null;
+            input.forEach(p => {
+                value = system[p];
+            });
+
+            inputConfig.value = value;
+
+            const group = field.toFormGroup(groupConfig, inputConfig);
             return new Handlebars.SafeString(group.outerHTML);
         },
         ledger: (target, id, label) => {

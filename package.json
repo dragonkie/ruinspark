@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "CSS compiler for the Ruinspark system",
   "scripts": {
-    "build": "gulp build",
-    "compile": "gulp css",
-    "watch": "gulp",
     "sass": "sass --watch ./scss/ruinspark.scss ./css/ruinspark.css"
   },
   "browserslist": [

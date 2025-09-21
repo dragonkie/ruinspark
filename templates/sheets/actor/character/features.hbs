@@ -1,0 +1,27 @@
+<div class="rs-tab-content rs-tab-features flexcol gap-l pad-none">
+    <!-- Attributes -->
+    <div class="flexcol">
+        <b>{{localize 'RUINSPARK.Generic.Attributes'}}</b>
+        <div class="flexrow gap-m">
+            {{#each system.attributes as |attribute key|}}
+            <div class="flexcol">
+                <div>{{key}}</div>
+                <input type="number" name="system.attributes.{{key}}.value" value="{{attribute.value}}" placeholder="0">
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <!-- Approaches -->
+    <div class="flexcol">
+        <b>{{localize 'RUINSPARK.Generic.Approaches'}}</b>
+        <div class="flexrow gap-m">
+            {{#each system.approaches as |approach key|}}
+            <div class="flexcol">
+                <div>{{key}}</div>
+                <input type="number" name="system.approaches.{{key}}.value" value="{{approach.value}}" placeholder="0">
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

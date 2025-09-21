@@ -21,6 +21,7 @@
   "RUINSPARK.Add": "Add",
 
   "RUINSPARK": {
+    
     "Sheets": {
       "Actor": {
         "Actor": "Actor",
@@ -30,6 +31,15 @@
         "Weapon": "Weapon",
         "Armour": "Armour"
       }
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "npc": "Npc"
+    },
+    "Item": {
+
     }
   }
 }

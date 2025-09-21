@@ -23,10 +23,9 @@ export default function RuinsparkSheetMixin(Base) {
         //============================================================================================
         //> Sheet tab controls
         //============================================================================================
-        tabGroups = {};
-
         static PARTS = {};
         static TABS = {};
+        tabGroups = {};
 
         _getTabs() {
             return Object.values(this.constructor.TABS).reduce((acc, v) => {
@@ -48,7 +47,7 @@ export default function RuinsparkSheetMixin(Base) {
             const doc = this.document;
             const context = {
                 document: doc,
-                system: {},
+                system: this.document.system,
                 config: CONFIG.RUINSPARK,
                 rollData: doc.getRollData(),
                 name: doc.name,
@@ -58,8 +57,16 @@ export default function RuinsparkSheetMixin(Base) {
                 isPlayMode: this.isPlayMode,
                 isEditable: this.isEditable,
                 isGM: game.user.isGM,
-                effects: {}
+                effects: {},
+                editors: {}
             }
+
+            context.editors.description = {
+                value: doc.system.description.value,
+                enriched: await utils.enrichHTML(doc.system.description.value, context)
+            }
+
+            console.log(context);
 
             return context;
         }
@@ -117,6 +124,11 @@ export default function RuinsparkSheetMixin(Base) {
             return super._renderHTML(context, options);
         }
 
+        /**
+         * Adds the tab navigation as bookmarks on the right hand side of the sheet
+         * @param {Object} options 
+         * @returns {HTMLElement}
+         */
         async _renderFrame(options) {
             const frame = super._renderFrame(options);
 

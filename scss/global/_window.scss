@@ -1,5 +1,7 @@
+@use '../utils/bootstrap' as util;
+
 .window-app {
-  font-family: $font-primary;
+  font-family: util.$font-primary;
 }
 
 .rollable {
