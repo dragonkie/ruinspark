@@ -383,6 +383,7 @@
   left: 100%;
   top: 36px;
   align-items: flex-start;
+  text-shadow: 0 0 0 rgba(252, 205, 119, 0);
 }
 .sheet.actor .sheet-bookmarks .bookmark {
   display: flex;
@@ -426,6 +427,8 @@
   flex: 0 0 100px;
   height: 100px;
   margin-right: 10px;
+  object-fit: cover;
+  object-position: top center;
 }
 .sheet-header .header-fields {
   flex: 1;

@@ -1,18 +1,4 @@
 {
-  "RUINSPARK.AbilityStr": "Strength",
-  "RUINSPARK.AbilityCon": "Constitution",
-  "RUINSPARK.AbilityDex": "Dexterity",
-  "RUINSPARK.AbilityInt": "Intelligence",
-  "RUINSPARK.AbilityWis": "Wisdom",
-  "RUINSPARK.AbilityCha": "Charisma",
-
-  "RUINSPARK.AbilityStrAbbr": "str",
-  "RUINSPARK.AbilityConAbbr": "con",
-  "RUINSPARK.AbilityDexAbbr": "dex",
-  "RUINSPARK.AbilityIntAbbr": "int",
-  "RUINSPARK.AbilityWisAbbr": "wis",
-  "RUINSPARK.AbilityChaAbbr": "cha",
-
   "RUINSPARK.EffectCreate": "Create Effect",
   "RUINSPARK.EffectToggle": "Toggle Effect",
   "RUINSPARK.EffectEdit": "Edit Effect",
@@ -21,7 +7,6 @@
   "RUINSPARK.Add": "Add",
 
   "RUINSPARK": {
-    
     "Sheets": {
       "Actor": {
         "Actor": "Actor",
@@ -31,6 +16,37 @@
         "Weapon": "Weapon",
         "Armour": "Armour"
       }
+    },
+    "Attributes": {
+      "str": "Strength",
+      "agi": "Agility",
+      "int": "Intelligence",
+      "wil": "Willpower",
+      "Abbr": {
+        "str": "str",
+        "agi": "agi",
+        "int": "int",
+        "wil": "wil"
+      }
+    },
+    "Approaches": {
+      "Power": "Power",
+      "Speed": "Speed",
+      "Sneak": "Sneak",
+      "Spectacle": "Spectacle",
+      "Percission": "Percission",
+      "Wit": "Wit"
+    },
+    "Generic": {
+      "Attribute": "Attribute",
+      "Attributes": "Attributes",
+      "Approach": "Approach",
+      "Approaches": "Approaches",
+      "Stamina": "Stamina",
+      "Armour": "Armour",
+      "Health": "Health",
+      "Reflex": "Reflex",
+      "Momentum": "Momentum"
     }
   },
   "TYPES": {
@@ -38,8 +54,6 @@
       "character": "Character",
       "npc": "Npc"
     },
-    "Item": {
-
-    }
+    "Item": {}
   }
 }

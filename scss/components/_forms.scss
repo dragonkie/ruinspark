@@ -93,6 +93,8 @@
     flex: 0 0 100px;
     height: 100px;
     margin-right: 10px;
+    object-fit: cover;
+    object-position: top center;
   }
 
   .header-fields {

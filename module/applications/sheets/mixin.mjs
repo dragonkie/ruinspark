@@ -5,6 +5,13 @@ import RuinsparkDialog from "../dialog.mjs";
 export default function RuinsparkSheetMixin(Base) {
     const mixin = foundry.applications.api.HandlebarsApplicationMixin;
     return class RuinsparkDocumentSheet extends mixin(Base) {
+        static DEFAULT_OPTIONS = {
+            form: { submitOnChange: true },
+            actions: {
+                editDocumentImage: this._onEditDocumentImage
+            }
+        }
+
         //============================================================================================
         //> Sheet modes
         //============================================================================================
@@ -14,11 +21,6 @@ export default function RuinsparkSheetMixin(Base) {
         get sheetMode() { return this._sheetMode };
         get isPlayMode() { return this._sheetMode === this.constructor.SHEET_MODES.PLAY };
         get isEditMode() { return this._sheetMode === this.constructor.SHEET_MODES.EDIT };
-
-        static DEFAULT_OPTIONS = {
-            form: { submitOnChange: true },
-            actions: {}
-        }
 
         //============================================================================================
         //> Sheet tab controls
@@ -359,5 +361,24 @@ export default function RuinsparkSheetMixin(Base) {
          * @param {Element} target 
          */
         _onClickAction(event, target) { }
+
+        /**
+         * 
+         * @param {Event} event 
+         * @param {Element} target 
+         * @returns 
+         */
+        static _onEditDocumentImage(event, target) {
+            if (!this.isEditable) return;
+            const current = this.document.img;
+            const fp = new FilePicker({
+                type: "image",
+                current: current,
+                callback: path => this.document.update({ 'img': path }),
+                top: this.position.top + 40,
+                left: this.position.left + 10
+            });
+            fp.browse();
+        }
     }
 }

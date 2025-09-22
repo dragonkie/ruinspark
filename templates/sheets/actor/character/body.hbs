@@ -2,13 +2,13 @@
 
 	{{! Sheet Header }}
 	<header class="sheet-header" style="padding-bottom: 6px;">
-		<img class="profile-img" src="{{document.img}}" data-edit="img" title="{{document.name}}" height="100" width="100" />
+		<img class="profile-img" src="{{document.img}}" data-edit="img" data-action="editDocumentImage" title="{{document.name}}" height="100" width="100" />
 		<div class="header-fields">
 			<h1 class="charname"><input name="name" type="text" value="{{document.name}}" placeholder="Name" /></h1>
 			<div class="resources flexrow gap-m">
 				<div class="flexrow gap-m">
 					<div class="resource flex-group-center">
-						<label for="system.hp.value" class="resource-label">Health</label>
+						<label class="resource-label">Health</label>
 						<div class="resource-content flexrow flex-center flex-between">
 							{{systemFieldInput system 'hp.value'}}
 							<span> / </span>
@@ -16,7 +16,7 @@
 						</div>
 					</div>
 					<div class="resource flex-group-center">
-						<label for="system.power.value" class="resource-label">Stamina</label>
+						<label class="resource-label">Stamina</label>
 						<div class="resource-content flexrow flex-center flex-between">
 							{{systemFieldInput system 'stamina.value'}}
 							<span> / </span>
@@ -34,14 +34,14 @@
 					</div>
 
 					<div class="resource flex-group-center">
-						<label for="system.attributes.level.value" class="resource-label">Momentum</label>
+						<label class="resource-label">Momentum</label>
 						<div class="resource-content flexrow flex-center flex-between">
 							{{systemFieldInput system 'momentum.value' classes='align-center'}}
 						</div>
 					</div>
 
 					<div class="resource flex-group-center">
-						<label for="system.attributes.level.value" class="resource-label">Reflex</label>
+						<label class="resource-label">Reflex</label>
 						<div class="resource-content flexrow flex-center flex-between">
 							{{systemFieldInput system 'reflex.value' classes='align-center'}}
 						</div>

@@ -160,9 +160,9 @@ function registerHelpers() {
             };
 
             const input = path.split(".");
-            var value = null;
+            var value = system;
             input.forEach(p => {
-                value = system[p];
+                value = value[p];
             });
 
             inputConfig.value = value;

@@ -149,7 +149,7 @@ export class ActorDataModel extends SystemDataModel {
         for (const [key, approach] of Object.entries(this.approaches)) {
             this.dc[key] = {};
             for (const [k, attribute] of Object.entries(this.attributes)) {
-                this.dc[key][k] = approach.value + attribute.value;
+                this.dc[key][k] = attribute.value - approach.value;
             }
         }
     }
