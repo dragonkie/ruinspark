@@ -8,6 +8,7 @@ export default function RuinsparkSheetMixin(Base) {
         static DEFAULT_OPTIONS = {
             form: { submitOnChange: true },
             actions: {
+                roll: this._onRoll,
                 editDocumentImage: this._onEditDocumentImage
             }
         }
@@ -379,6 +380,14 @@ export default function RuinsparkSheetMixin(Base) {
                 left: this.position.left + 10
             });
             fp.browse();
+        }
+
+        static async _onRoll(event, target) {
+            let formula = target.dataset.roll;
+            if (!Roll.validate(formula)) throw new Error("Invalid roll formula in event dataset");
+            const roll = new Roll(formula);
+            await roll.evaluate();
+            await roll.toMessage();
         }
     }
 }

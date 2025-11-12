@@ -4,18 +4,18 @@ export const RUINSPARK = {};
  * The set of Ability Scores used within the sytem.
  * @type {Object}
  */
-RUINSPARK.abilities = {
-  "str": "RUINSPARK.Ability.Str",
-  "agi": "RUINSPARK.Ability.Dex",
-  "int": "RUINSPARK.Ability.Int",
-  "wil": "RUINSPARK.Ability.Wis"
+RUINSPARK.attributes = {
+  str: "RUINSPARK.Attribute.str",
+  agi: "RUINSPARK.Attribute.agi",
+  int: "RUINSPARK.Attribute.int",
+  wil: "RUINSPARK.Attribute.wil"
 };
 
-RUINSPARK.abilityAbbreviations = {
-  "str": "RUINSPARK.Ability.abbr.Str",
-  "agi": "RUINSPARK.Ability.abbr.Dex",
-  "int": "RUINSPARK.Ability.abbr.Int",
-  "wil": "RUINSPARK.Ability.abbr.Wis"
+RUINSPARK.attributeAbbr = {
+  str: "RUINSPARK.Attribute.abbr.str",
+  agi: "RUINSPARK.Attribute.abbr.agi",
+  int: "RUINSPARK.Attribute.abbr.int",
+  wil: "RUINSPARK.Attribute.abbr.wil"
 };
 
 RUINSPARK.approaches = {

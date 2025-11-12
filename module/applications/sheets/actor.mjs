@@ -1,3 +1,4 @@
+import { RUINSPARK } from "../../helpers/config.mjs";
 import utils from "../../helpers/utils.mjs";
 import RuinsparkSheetMixin from "./mixin.mjs";
 
@@ -10,6 +11,18 @@ export default class RuinsparkActorSheet extends RuinsparkSheetMixin(ActorSheetV
         actions: {
             bookmark: this._onClickBookmark
         }
+    }
+
+    async _prepareContext() {
+        const context = await super._prepareContext();
+
+        // localize the common actor values
+        console.log(context);
+        for (const key of Object.keys(context.system.attributes)) {
+            context.system.attributes[key].label = utils.localize(RUINSPARK.attributes[key])
+        }
+
+        return context;
     }
 
     /**

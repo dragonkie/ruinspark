@@ -5,7 +5,7 @@
         <div class="flexrow gap-m">
             {{#each system.attributes as |attribute key|}}
             <div class="flexcol">
-                <div>{{key}}</div>
+                <a class="rollable" data-action="roll" data-roll="2d12<{{attribute.value}}">{{attribute.label}}</a>
                 <input type="number" name="system.attributes.{{key}}.value" value="{{attribute.value}}" placeholder="0">
             </div>
             {{/each}}
